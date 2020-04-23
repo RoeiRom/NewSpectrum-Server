@@ -1,8 +1,15 @@
+import cors from 'cors'
+import dotenv from 'dotenv';
 import express from 'express';
 
 import indexRoute from './routes/index';
 
+dotenv.config();
+
 const app = express();
+const whitelist = process.env.ALLOWED_CORS.split(' ');
+
+app.use(cors({ origin: whitelist }));
 
 app.use(express.json());
 
