@@ -21,11 +21,6 @@ app.use(cors({ origin: (origin, callback) => {
 
 app.use(express.json());
 
-app.use((req: Request, res: Response, next: NextFunction) => {
-    console.log(req.headers["content-type"]);
-    next();
-})
-
 app.use('/', indexRoute);
 
 app.listen(process.env.PORT || 3000, () => {
