@@ -9,15 +9,7 @@ dotenv.config();
 const app = express();
 const whitelist = process.env.ALLOWED_CORS.split(' ');
 
-app.use(cors({ origin: (origin, callback) => {
-        console.log(origin);
-        if (!origin) return callback(null, true);
-        if (whitelist.indexOf(origin) !== -1) {
-            return callback(new Error('Not allowed by cors!'), false);
-        }
-        return callback(null, true);
-    } 
-}));
+app.use(cors({ origin: whitelist }));
 
 app.use(express.json());
 
